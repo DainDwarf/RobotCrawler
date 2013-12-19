@@ -64,6 +64,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Maze.h" />
+    <ClInclude Include="MazeBuilder.h" />
+    <ClInclude Include="MazeComponents.h" />
+    <ClInclude Include="MazeGen.h" />
+    <ClInclude Include="TurnCount.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Maze.cpp" />
+    <ClCompile Include="MazeBuilder.cpp" />
+    <ClCompile Include="MazeComponents.cpp" />
+    <ClCompile Include="MazeGen.cpp" />
+    <ClCompile Include="TurnCount.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
