@@ -5,35 +5,41 @@ class MazeElem {
 public:
 	virtual bool IsWalkable() = 0;
 	virtual bool CanSeeThrough() = 0;
-	int Getx() const { return posx; }
-	int Gety() const { return posy; }
 	//I am probably missing some useful things here
 
 protected:
-	MazeElem(int x, int y);
-
-private:
-	int posx;
-	int posy;
+	MazeElem() {}
 };
 
 class Room: public MazeElem {
 public:
-	Room(int x, int y) : MazeElem(x, y) {}
+	static Room* GetRoom(); //Flyweight
 	bool IsWalkable() { return true; }
 	bool CanSeeThrough() { return true; }
+
+protected:
+	Room() :MazeElem(){}
+
+private:
+	static Room* instance;
 };
 
 class Wall : public MazeElem {
 public:
-	Wall(int x, int y) : MazeElem(x, y){}
+	static Wall* GetWall(); //Flyweight
 	bool IsWalkable() { return false; }
 	virtual bool CanSeeThrough() { return false; }
+
+protected:
+	Wall() : MazeElem(){}
+
+private:
+	static Wall* instance;
 };
 
 class Door : public MazeElem {
 public:
-	Door(int x, int y);
+	Door();
 	bool IsWalkable();
 	virtual bool CanSeeThrough();
 	virtual void open();
@@ -58,6 +64,8 @@ public:
 	//This HAS to be called when someone sees the door.
 
 private:
+	int posx;
+	int posy;
 	int range;
 	int opening_time;
 	int init_timer;

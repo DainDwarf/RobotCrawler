@@ -1,13 +1,19 @@
 #include "MazeComponents.h"
 #include <cstdlib>
 
-MazeElem::MazeElem(int x, int y)
+Room* Room::instance = new Room;//Might as well initialize it at compile time
+Room* Room::GetRoom()
 {
-	posx = x;
-	posy = y;
+	return instance;
 }
 
-Door::Door(int x, int y) : MazeElem(x, y)
+Wall* Wall::instance = new Wall;
+Wall* Wall::GetWall()
+{
+	return instance;
+}
+
+Door::Door() : MazeElem()
 {
 	closed = true;
 }
@@ -32,8 +38,10 @@ void Door::close()
 	closed = true;
 }
 
-ElectricDoor::ElectricDoor(int x, int y, int detectRange, int timeOpen) : Door(x, y)
+ElectricDoor::ElectricDoor(int x, int y, int detectRange, int timeOpen) : Door()
 {
+	posx = x;
+	posy = y;
 	range = detectRange;
 	opening_time = timeOpen;
 	init_timer = 0;
@@ -52,7 +60,7 @@ bool ElectricDoor::CanSeeThrough()
 void ElectricDoor::SeeMovement(int x, int y)
 {
 	//First, see if it is close enough
-	if ((std::abs(x - Getx()) < range) && (std::abs(y - Gety()) < range))
+	if ((std::abs(x - posx) < range) && (std::abs(y - posy) < range))
 	{ //Now, look if the door is already subscribed (and surely opened)
 		if (subscribed_to_timer)
 			init_timer = TurnCount::getTime();

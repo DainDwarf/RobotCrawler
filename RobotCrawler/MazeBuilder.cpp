@@ -32,17 +32,17 @@ void MazeBuilder::addRoom(int x1, int x2, int y1, int y2)
 	//Create rooms inside it
 	for (int x = x1+1; x < x2; x++) {
 		for (int y = y1+1; y < y2; y++) {
-			myMaze->setElem(x, y, new Room(x, y));
+			myMaze->setElem(x, y, Room::GetRoom());
 		}
 	}
 	//And now, place the walls around it.
 	for (int x = x1; x <= x2; x++) {
-		myMaze->setElem(x, y1, new Wall(x, y1));
-		myMaze->setElem(x, y2, new Wall(x, y2));
+		myMaze->setElem(x, y1, Wall::GetWall());
+		myMaze->setElem(x, y2, Wall::GetWall());
 	}
 	for (int y = y1 + 1; y < y2; y++) {
-		myMaze->setElem(x1, y, new Wall(x1, y));
-		myMaze->setElem(x2, y, new Wall(x2, y));
+		myMaze->setElem(x1, y, Wall::GetWall());
+		myMaze->setElem(x2, y, Wall::GetWall());
 	}
 }
 
@@ -60,6 +60,6 @@ Maze* MazeBuilder::getMaze()
 {
 	for (int x = 0; x < MAZE_LENGTH;x++)
 	for (int y = 0; y < MAZE_HEIGHT;y++)
-	if (myMaze->getPos(x, y) == 0) myMaze->setElem(x, y, new Wall(x, y));
+	if (myMaze->getPos(x, y) == 0) myMaze->setElem(x, y, Wall::GetWall());
 	return myMaze;
 }
