@@ -8,7 +8,7 @@ public:
 	virtual Maze* generate() = 0;
 };
 
-class StaticTestGen {
+class StaticTestGen : public MazeGenerator {
 public:
 	Maze* generate();
 };

@@ -8,7 +8,7 @@ public:
 	virtual void Update(const int time) = 0;
 
 protected:
-	NeedsTimer();
+	NeedsTimer() {}
 };
 
 //TurnCount is a kind of Singleton, and the subject of all NeedsTimer

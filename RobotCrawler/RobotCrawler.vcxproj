@@ -64,6 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MapView.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="MazeBuilder.h" />
     <ClInclude Include="MazeComponents.h" />
@@ -71,6 +72,8 @@
     <ClInclude Include="TurnCount.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapView.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="MazeBuilder.cpp" />
     <ClCompile Include="MazeComponents.cpp" />

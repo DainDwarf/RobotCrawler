@@ -6,11 +6,15 @@
 MazeBuilder* MazeBuilder::instance = 0;
 Maze* MazeBuilder::myMaze = 0;
 
+MazeBuilder::MazeBuilder()
+{
+	myMaze = new Maze();
+}
+
 MazeBuilder* MazeBuilder::getInstance()
 {
 	if (instance == 0) {
 		instance = new MazeBuilder;
-		myMaze = new Maze;
 	}
 	return instance;
 }

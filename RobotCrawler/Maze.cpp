@@ -15,6 +15,6 @@ MazeElem* Maze::getPos(const int x, const int y)
 
 void Maze::setElem(int x, int y, MazeElem* element)
 {
-	if (map[x][y] != 0) delete map[x][y];
+	//if (map[x][y] != 0) delete map[x][y];
 	map[x][y] = element;
 }

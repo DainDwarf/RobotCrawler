@@ -2,8 +2,14 @@
 #include <list>
 #include <iterator>
 
+NeedsTimer::~NeedsTimer()
+{
+	TurnCount::Detach(this);
+}
+
 TurnCount* TurnCount::instance = 0;
 int TurnCount::time = 0;
+std::list<NeedsTimer*> TurnCount::subscribers;
 
 TurnCount* TurnCount::getInstance()
 {

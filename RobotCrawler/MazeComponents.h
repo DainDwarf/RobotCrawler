@@ -1,10 +1,14 @@
 #pragma once
 #include "Turncount.h"
+#define ROOM_PRINT ' '
+#define WALL_PRINT '#'
+#define DOOR_PRINT '+'
 
 class MazeElem {
 public:
 	virtual bool IsWalkable() = 0;
 	virtual bool CanSeeThrough() = 0;
+	virtual char print() = 0;
 	//I am probably missing some useful things here
 
 protected:
@@ -16,6 +20,7 @@ public:
 	static Room* GetRoom(); //Flyweight
 	bool IsWalkable() { return true; }
 	bool CanSeeThrough() { return true; }
+	char print() { return ROOM_PRINT; }
 
 protected:
 	Room() :MazeElem(){}
@@ -29,6 +34,7 @@ public:
 	static Wall* GetWall(); //Flyweight
 	bool IsWalkable() { return false; }
 	virtual bool CanSeeThrough() { return false; }
+	char print() { return WALL_PRINT; }
 
 protected:
 	Wall() : MazeElem(){}
@@ -42,6 +48,7 @@ public:
 	Door();
 	bool IsWalkable();
 	virtual bool CanSeeThrough();
+	virtual char print() { return DOOR_PRINT; }
 	virtual void open();
 	virtual void close();
 
