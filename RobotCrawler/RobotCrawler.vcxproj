@@ -64,6 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Dice.h" />
     <ClInclude Include="MapView.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="MazeBuilder.h" />
@@ -72,6 +73,7 @@
     <ClInclude Include="TurnCount.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dice.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapView.cpp" />
     <ClCompile Include="Maze.cpp" />

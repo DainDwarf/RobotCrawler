@@ -13,15 +13,15 @@ Maze* StaticTestGen::generate () {
 	builder->addRoom(30, 60, 16, MAZE_HEIGHT-1);
 	builder->addRoom(60, MAZE_LENGTH-1, 16, MAZE_HEIGHT-1);
 
-	builder->connectHorizontally(0, 30, 14);
-	builder->connectHorizontally(30, 60, 14);
-	builder->connectHorizontally(60, MAZE_LENGTH-1, 14);
-	builder->connectHorizontally(0, 30, 16);
-	builder->connectHorizontally(30, 60, 16);
-	builder->connectHorizontally(60, MAZE_LENGTH-1, 16);
+	builder->connectHorizontally(1, 29, 14);
+	builder->connectHorizontally(31, 59, 14);
+	builder->connectHorizontally(61, MAZE_LENGTH-2, 14);
+	builder->connectHorizontally(1, 29, 16);
+	builder->connectHorizontally(31, 59, 16);
+	builder->connectHorizontally(61, MAZE_LENGTH-2, 16);
 
-	builder->connectVertically(0, 14, 30);
-	builder->connectVertically(16, MAZE_HEIGHT-1, 60);
+	builder->connectVertically(1, 13, 30);
+	builder->connectVertically(17, MAZE_HEIGHT-2, 60);
 
 	return builder->getMaze();
 }

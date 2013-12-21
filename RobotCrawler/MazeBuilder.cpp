@@ -1,6 +1,7 @@
 #include "Maze.h"
 #include "MazeBuilder.h"
 #include "MazeComponents.h"
+#include "Dice.h"
 #include <utility>
 
 MazeBuilder* MazeBuilder::instance = 0;
@@ -52,12 +53,46 @@ void MazeBuilder::addRoom(int x1, int x2, int y1, int y2)
 
 void MazeBuilder::connectVertically(int y1, int y2, int x)
 {
-	//TODO : Place windows and a door randomly
+	//Place one door
+	Dice* ddoor = new Dice(y2 - y1 + 1);
+	int doorplacement = ddoor->roll() + y1 - 1;
+	myMaze->setElem(x, doorplacement, new Door);
+
+
+	//Place windows
+	Dice* d6 = new Dice(6);
+	for (int y = y1; y <= doorplacement - 2; y++)
+	if (d6->roll() == 6){
+		myMaze->setElem(x, y, new WallWithWindow);
+		y++;
+	}
+	for (int y = doorplacement + 2; y <= y2; y++)
+	if (d6->roll() == 6) {
+		myMaze->setElem(x, y, new WallWithWindow);
+		y++;
+	}
 }
 
 void MazeBuilder::connectHorizontally(int x1, int x2, int y)
 {
-	//TODO: Place windows and a door randomly
+	//Place one door
+	Dice* ddoor = new Dice(x2 - x1 + 1);
+	int doorplacement = ddoor->roll() + x1 - 1;
+	myMaze->setElem(doorplacement, y, new Door);
+
+
+	//Place windows
+	Dice* d6 = new Dice(6);
+	for (int x = x1; x <= doorplacement - 2; x++)
+	if (d6->roll() == 6){
+		myMaze->setElem(x, y, new WallWithWindow);
+		x++;
+	}
+	for (int x = doorplacement + 2; x <= x2; x++)
+	if (d6->roll() == 6) {
+		myMaze->setElem(x, y, new WallWithWindow);
+		x++;
+	}
 }
 
 Maze* MazeBuilder::getMaze()
