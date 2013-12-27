@@ -25,7 +25,6 @@ int TurnCount::getTime()
 void TurnCount::Tick()
 {
 	time++;
-	//TODO: Notify all subscribers
 	for (std::list<NeedsTimer*>::iterator i(subscribers.begin()); i != subscribers.end(); ++i){
 		(*i)->Update(time);
 	}
